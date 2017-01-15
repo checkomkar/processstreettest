@@ -3,8 +3,19 @@
             Upload File<input id="get_input" class="btn" type="file" name="file" data-url="https://upload.wistia.com">
         </span>
     <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': progress + '%' }"></div>
+        <div class="progress-bar progress-bar-success progress-bar-striped"
+             role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': progress + '%' }"></div>
+
     </div>
-    <span>Status: {{$ctrl.hero.status}}</span>
-    <span>{{test}}</span>
+    <span ng-show="percent != 0">{{percent}}</span>
+    <div ng-show="res">Status: {{status}}</div>
+    <script ng-if="res" ng-src="{{url}}" async></script>
+    <script src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+    <div ng-show="res != ''" class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+            <div class="wistia_embed wistia_async_{{res.hashed_id}} videoFoam=true"
+                 style="height:100%;width:100%">&nbsp;</div>
+
+        </div>
+    </div>
 </div>
